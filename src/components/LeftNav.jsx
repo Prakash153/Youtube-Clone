@@ -26,7 +26,7 @@ const LeftNav = () => {
   // React.Fragment is nothing but an empty fragment that works as a parent
   return (
     <div
-      className={`md:block w-[240px] overflow-y-auto h-full  overflow-y-hidden py-4 bg-black absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all  ${
+      className={`md:block w-[240px] overflow-y-auto h-full  overflow-y-hidden py-4  bg-[#292929] absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all  ${
         mobileMenu ? "translate-x-0" : ""
       }`}
     >
