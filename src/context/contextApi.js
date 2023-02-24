@@ -6,8 +6,8 @@ export const Context = createContext();
 
 export const AppContext = (props) => {
   const [loading, setLoading] = useState(false);
-  const [searchResult, setSearchResult] = useState([]);
-  const [selectedCategory, setSelectCategories] = useState("New");
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("New");
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const AppContext = (props) => {
     setLoading(true);
     fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
       console.log(contents);
-      setSearchResult(contents);
+      setSearchResults(contents);
       setLoading(false);
     });
   };
@@ -27,9 +27,9 @@ export const AppContext = (props) => {
       value={{
         loading,
         setLoading,
-        searchResult,
-        setSelectCategories,
         selectedCategory,
+        setSelectedCategory,
+        searchResults,
         mobileMenu,
         setMobileMenu,
       }}

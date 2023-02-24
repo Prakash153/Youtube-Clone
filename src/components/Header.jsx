@@ -48,7 +48,7 @@ const Header = () => {
     // md: -> is called media query for resizeable
     // [inside this we can give custom colors ]
     // [0.6] this tells the opacity is 0.6
-    <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-black dark:bg-white">
+    <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 py-[10px]  md:py-[12px]px-4 md:px-5  bg-black">
       {loading && <Loader />}
 
       <div className="flex h-5 items-center">
