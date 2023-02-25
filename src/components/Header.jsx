@@ -12,20 +12,23 @@ import { CgClose } from "react-icons/cg";
 
 import { Context } from "../context/contextApi";
 import Loader from "../shared/Loader";
+
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   /*                                                    Content           */
   /* Here Context makes accessible to Contex.provider component and all the values of the component*/
+
   const { loading, mobileMenu, setMobileMenu } = useContext(Context);
 
-  /*                                                   Search Bar functions                                                              */
+  /*                                            Search Bar functions                         */
   /* 1. event.ket === enter this line indicates that if someone presses enter on search the text will be triggered through event parameter
-
     2. searchQuery?.length adding question mark is termed as optional chaining that prevents crashing of website if the value is null   undefined
     
     3. whenever something is searched the navigate method takes the user to searchResult page using searchQuery*/
+
   const navigate = useNavigate();
+
   const searchQueryHandler = (event) => {
     if (
       (event?.key === "Enter" || event === "searchButton") &&
@@ -35,20 +38,18 @@ const Header = () => {
     }
   };
 
-  /*                                                  Mobile Menu section */
+  /*                                       Mobile Menu section */
 
   const mobileMenuToggle = () => {
+    console.log("clicked");
     setMobileMenu(!mobileMenu);
   };
 
   const { pathname } = useLocation();
   const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
+
   return (
-    // bg: white left out for now
-    // md: -> is called media query for resizeable
-    // [inside this we can give custom colors ]
-    // [0.6] this tells the opacity is 0.6
-    <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 py-[10px]  md:py-[12px]px-4 md:px-5  bg-[#292929]">
+    <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-black">
       {loading && <Loader />}
 
       <div className="flex h-5 items-center">

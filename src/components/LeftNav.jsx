@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useMediaQuery } from "@react-hook/media-query";
 import LeftNavMenuItem from "./LeftNavMenuItem";
 import { categories } from "../utils/constant";
 import { Context } from "../context/contextApi";
-
+import "./scrollbar.css";
 const LeftNav = () => {
-  const { selectedCategory, setSelectedCategory, mobileMenu } =
+  const { selectedCategory, setSelectedCategory, mobileMenu, setMobileMenu } =
     useContext(Context);
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  useEffect(() => {
+    setMobileMenu(isMobile);
+  }, [isMobile]);
 
   const navigate = useNavigate();
 
@@ -26,8 +31,10 @@ const LeftNav = () => {
   // React.Fragment is nothing but an empty fragment that works as a parent
   return (
     <div
-      className={`md:block w-[240px] overflow-y-auto h-full  overflow-y-hidden py-4  bg-[#292929] absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all  ${
-        mobileMenu ? "translate-x-0" : ""
+      className={`${
+        isMobile && mobileMenu ? "block" : "hidden"
+      } md:block w-[240px] overflow-y-auto h-full scrollbar-none py-4 bg-black absolute md:relative z-10 transition-all ${
+        mobileMenu ? "translate-x-0" : "-translate-x-240"
       }`}
     >
       <div className="flex px-5 flex-col">

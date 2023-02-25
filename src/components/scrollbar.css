@@ -1,3 +1,23 @@
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+.menu-items {
+  display: none; /* hide menu items by default */
+}
+
+@media (min-width: 768px) {
+  .menu-items {
+    display: block; /* show menu items on larger screens */
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-items {
+    display: none; /* hide menu items on smaller screens */
+  }
+
+  .mobile-menu-open .menu-items {
+    display: block; /* show menu items when mobile menu is open */
+  }
+}

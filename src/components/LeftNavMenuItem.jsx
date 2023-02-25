@@ -1,8 +1,8 @@
 import React from "react";
 
 const LeftNavMenuItem = ({ text, icon, className, action }) => {
+  // adding curly braces to so that it is appended with the props
   return (
-    // adding curly braces to so that it is appended with the props
     <div
       className={
         "text-white text-sm cursor-pointer h-10 flex items-center px-3 mb-[1px] rounded-lg hover:bg-white/[0.15] " +

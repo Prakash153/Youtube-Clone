@@ -4,12 +4,11 @@ import ReactPlayer from "react-player/youtube";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
 import { abbreviateNumber } from "js-abbreviation-number";
+import "./scrollbar.css";
 
 import { fetchDataFromApi } from "../utils/api";
 import { Context } from "../context/contextApi";
 import SuggestionVideoCard from "./SuggestionVideoCard";
-
-import "./scrollbar.css";
 
 const VideoDetails = () => {
   const [video, setVideo] = useState();
@@ -35,7 +34,7 @@ const VideoDetails = () => {
   const fetchRelatedVideos = () => {
     setLoading(true);
     fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-      // console.log(res);s
+      console.log(res);
       setRelatedVideos(res);
       setLoading(false);
     });
@@ -45,7 +44,7 @@ const VideoDetails = () => {
     <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
       <div className="w-full max-w-[1280px] flex flex-col lg:flex-row">
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] px-4 py-3 lg:py-6 overflow-y-auto">
-          <div className="h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0  ">
+          <div className="h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               controls
@@ -91,8 +90,7 @@ const VideoDetails = () => {
             </div>
           </div>
         </div>
-
-        <div className="flex flex-col py-6 px-4 overflow-y-auto scrollbar-none mr-0px lg:w-[350px] xl:w-[400px]">
+        <div className="flex flex-col py-6 px-4 overflow-y-auto scrollbar-none lg:w-[350px] xl:w-[400px]">
           {relatedVideos?.contents?.map((item, index) => {
             if (item?.type !== "video") return false;
             return <SuggestionVideoCard key={index} video={item?.video} />;
