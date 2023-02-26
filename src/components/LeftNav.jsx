@@ -12,7 +12,7 @@ const LeftNav = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   useEffect(() => {
     setMobileMenu(isMobile);
-  }, [isMobile]);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const LeftNav = () => {
     <div
       className={`${
         isMobile && mobileMenu ? "block" : "hidden"
-      } md:block w-[240px] overflow-y-auto h-full scrollbar-none py-4 bg-black absolute md:relative z-10 transition-all ${
+      } md:block w-[240px] overflow-y-auto h-full scrollbar-none py-4 bg-[#58287F] absolute md:relative z-10 transition-all ${
         mobileMenu ? "translate-x-0" : "-translate-x-240"
       }`}
     >
@@ -58,7 +58,7 @@ const LeftNav = () => {
         })}
         <hr className="my-5 border-white/[0.2]" />
         <div className="text-white/[0.5] text-[12px]">
-          Clone by: Prakash Singh
+          &#169; : Prakash Singh
         </div>
       </div>
     </div>
